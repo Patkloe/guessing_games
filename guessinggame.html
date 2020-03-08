@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Guessing games</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script>
+  function myFunction() {
+  var x = document.getElementById("pin");
+  x.value = x.value.toUpperCase();
+  }
+  </script>
+  <script>
+ // guessing = () =>
+//{
+let x = '';
+let test = '';
+let guessed =[];
+let wordletter =[];
+let val = '';
+let ecrit = '';
+let size_x = 0;
+let nbre_fois = 0;
+let bon = 0;
+let rate = 0;
+let perte = 0;
+let valprice = 0;
+let gain = 0;
+var verif = 0;
+let price = random_amount = Math.floor((Math.random() * 100) + 1);
+let restenbre = 0
+wordtofind = () =>{
+                   let mot = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 6);
+                   return mot;
+                  }
+wordtab = (chaine) =>{   // function pour avaoir un tableau de lettre a deviner
+var sortie = [];
+for(var i=0; i<chaine.length; i++) 
+sortie.push(chaine.charAt(i));
+return sortie;
+}
+x = wordtofind();
+wordletter = wordtab(x);
+size_x = x.length;
+restenbre = size_x - nbre_fois;
+guessletters = () =>{
+var recup = document.getElementById('pin');
+    
+test = recup.value /*prompt("Guess a letter : ")*/;  //ici on met value du input test
+nbre_fois++;
+restenbre--;
+for(var t= 0; t < guessed.length; t++) // to check if the letter was already given by the user, if yes we stop otherwise we add it in guessletters
+        {
+            if (guessed[t] == test)
+               {
+                 alert('Letter already done, bye');
+                 return 0;
+               }
+           // else
+           //    {
+           //        ecrit = ecrit + test;    // string des lettres saisie par l'utilisateur
+           //    }
+        }
+val = x.includes(test);
+guessed.push(test);
+ecrit = ecrit + test; // string des lettres saisie par l'utilisateur
+console.log('mot a deviner :' + " " + `${x}`+ " " + "letter guessed : " + " " + `${test}` + " " + " trouve :" + " " + `${val}` + " " + "nombre de fois :" + " " + `${nbre_fois}`+ " " + "reste nbre a determiner :" + " " + `${restenbre}`);
+// tester si la lettre devinnee match avec une des lettres du mot a deviver.
+var nouv = document.getElementById('labl');
+var y = '';
+ for(var k = 0; k < wordletter.length; k++)
+   {
+    if(wordletter[k] == test)
+      {
+        verif = 0;
+        bon++; // good letters we increment
+        gain = bon*price;
+        alert("Congratulations, you deserve a gain" + " " + "your price :" + " " + `${gain}` + "bon :" + `${bon}`);
+        valprice = gain;
+       // break;
+          if ( restenbre == 0)
+              {
+                  alert("End of the game");
+                  var nouv1 = document.getElementById('lab1');
+                  nouv1.innerHTML = x;
+              }
+     }
+     if(wordletter[k] != test) 
+        {
+          verif ++;
+          rate++;
+          perte = rate*price;
+          //var prix = document.getElementById('gn');
+         // prix.innerHTML = valprice - perte;
+          if (gain > 0)
+             {
+             // perte = gain - perte;
+             }
+          //alert(' Not Lucky , Do not feel discourage, Try again');
+          if ((verif > 0) && (restenbre > 0))
+            {
+              alert(' Not Lucky , Do not feel discourage, Try again');
+              //break;
+            }
+            else if (restenbre == 0)
+                  {
+                    alert("End of the game");
+                    var nouv1 = document.getElementById('lab1');
+                    nouv1.innerHTML = x;
+                   // break;  
+                  }
+          } // fin caractere non dans le mot a determiner
+   } // fin for loop
+  console.log('Vos lettres :' + ' ' + ecrit);
+  var nouv = document.getElementById('labl');
+   nouv.innerHTML = ecrit;
+ // var nouv1 = document.getElementById('lab1');
+ //  nouv1.innerHTML = x;
+   var prix = document.getElementById('gn');
+   prix.innerHTML = valprice;
+   
+}  // end function guessletters
+guessletters();
+while(restenbre > 0)
+     {
+      guessletters();
+     }
+wordletter;  //test
+  if (gain <= 0)
+    {
+     alert('Game lost');
+    } 
+   else
+       {
+          alert('you are a winner, your price :' + ' ' + `${valprice}`);
+       }        
+console.log('words : ' + " " + `${x}`);
+// guessed =[]; mots devines
+// wordletter =[]; mots a deviner
+for(var p = 0; p < guessed.length; p++)
+   {
+    for(var m = 0; m < wordletter.length; m++)
+       {
+        if(guessed[p] == wordletter[m])
+          {
+           console.log(guessed[p].fontcolor("green"));
+          }
+         else
+          {
+          console.log(guessed[p]);
+          }
+       }
+   }
+guessed;
+      //var x = document.getElementById('labl');
+     // x.innerHTML = "test";
+//}
+  </script>
+  <style>
+   .rec{
+          border-radius: 15px;
+          background-color: #808080;
+          color: #fff;
+      }
+    .rec1{
+          border-radius: 25px;
+         }
+    .lef{
+          margin-left:10%;
+      }
+      .win{
+          color: #00ff21;
+      }
+  </style>
+</head>
+<body>
+
+<div class="jumbotron text-center rec1">
+  <h3>My GUESSING GAME</h3><a href="#"><figure>
+             <img src="guessing_game.jpg" width="100" height="105"> <!--Title="Play" width="45" height="45" -->
+                    </figure></a>
+  <br>Please on the keyboard enter any letter in lower case, if the letter matches the word generated by the computer, you won, if all your letters match with the word, "SUCCESS" your are a Champion,
+     How to play ?
+    <br>  After typing your letter, please take out the cursor from the input text box.
+</div>
+  
+<div class="container">
+  <div class="row">
+    <div class="col-sm-2">
+      <!--  first column-->
+    </div>
+    <div class="col-sm-8 rec text-center">
+      <h3>TIME TO  PLAY</h3>
+      <label for="validationTooltip01">Your Letter</label>
+      <p><input type="text" id="pin" name="pin" maxlength="1" size="4" value="" onchange="guessletters()" required><br></p>
+    <br>
+     <p>GUESSING LETTERS :<label id="labl">P<span class = "win">a</span>pama</label><span class="lef">WORD : <label id="lab1"></label></span> <span class="lef">YOUR GAIN : <label id="gn"> </label></span></p>
+    </div>
+    <div class="col-sm-2">
+      <!--  Third column-->
+  </div>
+</div>
+
+</body>
+</html>
