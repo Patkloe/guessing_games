@@ -103,21 +103,28 @@ var y = '';
           //alert(' Not Lucky , Do not feel discourage, Try again');
           if ((verif > 0) && (restenbre > 0))
             {
-              alert(' Not Lucky , Do not feel discourage, Try again');
+             // alert(' Not Lucky , Do not feel discourage, Try again');
               //break;
             }
             else if (restenbre == 0)
                   {
-                    alert("End of the game");
-                    var nouv1 = document.getElementById('lab1');
+                    alert("End of the game"); // enlever l'alert ici
+                    var nouv1 = document.getElementById('lab1');   // on ecrit le prix du gain ici.
                     nouv1.innerHTML = x;
                    // break;  
                   }
           } // fin caractere non dans le mot a determiner
    } // fin for loop
   console.log('Vos lettres :' + ' ' + ecrit);
-  var nouv = document.getElementById('labl');
-   nouv.innerHTML = ecrit;
+  var nouv = document.getElementById('labl'); 
+// ici faire le test avant d'afficher l'alerte
+  var bool1 = val;
+  if (bool1 == true)    // test
+   {
+     alert('Good letter');
+   }
+  alert('Trouve test :' + " " +`${bool1}` + " " + "reste a jouer : " + " " + `${restenbre}`); 
+   nouv.innerHTML = ecrit; //                                   on ecrit le caractere de l'utilisateur
  // var nouv1 = document.getElementById('lab1');
  //  nouv1.innerHTML = x;
    var prix = document.getElementById('gn');
