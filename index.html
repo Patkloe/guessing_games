@@ -79,12 +79,12 @@ var y = '';
         verif = 0;
         bon++; // good letters we increment
         gain = bon*price;
-        alert("Congratulations, you deserve a gain" + " " + "your price :" + " " + `${gain}` + "bon :" + `${bon}`);
+        //alert("Congratulations, you deserve a gain" + " " + "your price :" + " " + `${gain}` + "bon :" + `${bon}`);
         valprice = gain;
        // break;
           if ( restenbre == 0)
               {
-                  alert("End of the game");
+                  //alert("End of the game");  pour la fin du jeu
                   var nouv1 = document.getElementById('lab1');
                   nouv1.innerHTML = x;
               }
@@ -108,7 +108,7 @@ var y = '';
             }
             else if (restenbre == 0)
                   {
-                    alert("End of the game"); // enlever l'alert ici
+                    //alert("End of the game"); // enlever l'alert ici
                     var nouv1 = document.getElementById('lab1');   // on ecrit le prix du gain ici.
                     nouv1.innerHTML = x;
                    // break;  
@@ -119,11 +119,24 @@ var y = '';
   var nouv = document.getElementById('labl'); 
 // ici faire le test avant d'afficher l'alerte
   var bool1 = val;
-  if (bool1 == true)    // test
+  var fin = restenbre;
+  if (bool1 == true && fin == 0 )    // test
    {
-     alert('Good letter');
+     alert('Good letter, you deserve a price, End of the Game' );
    }
-  alert('Trouve test :' + " " +`${bool1}` + " " + "reste a jouer : " + " " + `${restenbre}`); 
+  else if(bool1 == true && fin > 0)
+   {
+    alert('Good letter, you deserve a price, Continue to Guess a letter :');
+   }
+  else if(bool1 == false && fin >0)
+   {
+    alert('You failed, dont feel discourage, Continue to Guess a letter :');
+   }
+  else if(bool1 == false && fin == 0) 
+   {
+     alert('End of the game');
+   }
+  //alert('Trouve test :' + " " +`${bool1}` + " " + "reste a jouer : " + " " + `${restenbre}`); 
    nouv.innerHTML = ecrit; //                                   on ecrit le caractere de l'utilisateur
  // var nouv1 = document.getElementById('lab1');
  //  nouv1.innerHTML = x;
